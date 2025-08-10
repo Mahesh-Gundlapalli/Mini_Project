@@ -1,0 +1,38 @@
+<div class="container my-3">
+  <button class="btn btn-primary mb-3" (click)="goHome()">Back to Home</button>
+</div>
+
+<div class="container my-4">
+  <div *ngFor="let line of saved.lines" class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <h4 class="card-title text-primary">{{ line.recipe.name }}</h4>
+      <h6 class="card-subtitle mb-2 text-muted text-uppercase">
+        {{ line.recipe.category }}
+      </h6>
+
+      <h6>Ingredients:</h6>
+      <ul class="list-group list-group-flush mb-3">
+        <li
+          *ngFor="let ingredient of line.recipe.ingredients"
+          class="list-group-item px-0"
+        >
+          {{ ingredient }}
+        </li>
+      </ul>
+
+      <h6>Instructions:</h6>
+      <ol class="mb-3">
+        <li *ngFor="let instruction of line.recipe.instructions">
+          {{ instruction }}
+        </li>
+      </ol>
+
+      <button
+        class="btn btn-danger"
+        (click)="saved.removeLine(line.recipe.id ?? 0)"
+      >
+        Unsave
+      </button>
+    </div>
+  </div>
+</div>
