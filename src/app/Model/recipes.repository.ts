@@ -45,4 +45,19 @@ export class RecipeRepository {
       this.recipes.splice(index, 1);
     }
   }
+
+  addRecipe(recipe: Recipe) {
+  this.recipes.push(recipe);
+  this.categories = this.recipes
+    .map((p) => p.category ?? '(None)')
+    .filter((c, index, array) => array.indexOf(c) === index)
+    .sort();
+  }
+
+  getNextId(): number {
+    return this.recipes.length > 0
+    ? Math.max(...this.recipes.map(r => r.id ?? 0)) + 1
+    : 1;
+  }
+
 }

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { RecipeRepository } from '../Model/recipes.repository';
 import { Recipe } from '../Model/recipes.model';
@@ -23,5 +24,13 @@ export class AdminComponent implements OnInit {
 
   editRecipe(id: number) {
     this.router.navigate(['/admin/edit', id]);
+  }
+
+  addRecipe() {
+    this.router.navigate(['/admin/add']);
+  }
+
+  logout() {
+    this.router.navigate(['/store']);
   }
 }

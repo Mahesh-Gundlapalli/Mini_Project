@@ -3,6 +3,7 @@ import { Recipe } from '../Model/recipes.model';
 import { Saved } from '../Model/saved.model';
 import { RecipeRepository } from './../Model/recipes.repository';
 import { Component } from '@angular/core';
+
 @Component({
   selector: 'store',
   templateUrl: 'store.component.html',
@@ -30,8 +31,8 @@ export class StoreComponent {
     this.saved.addLine(recipe);
     this.router.navigateByUrl('/saved');
   }
-  goToAdmin() {
-  this.router.navigate(['/admin']);
-  }
 
+  goToAdmin() {
+    this.router.navigate(['/admin']);
+  }
 }
