@@ -30,4 +30,8 @@ export class StoreComponent {
     this.saved.addLine(recipe);
     this.router.navigateByUrl('/saved');
   }
+  goToAdmin() {
+  this.router.navigate(['/admin']);
+  }
+
 }

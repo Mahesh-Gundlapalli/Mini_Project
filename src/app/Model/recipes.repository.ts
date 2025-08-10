@@ -1,4 +1,4 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './recipes.model';
 import { StaticDataSource } from './static.datasource';
 
@@ -6,6 +6,7 @@ import { StaticDataSource } from './static.datasource';
 export class RecipeRepository {
   private recipes: Recipe[] = [];
   private categories: string[] = [];
+
   constructor(public dataSource: StaticDataSource) {
     dataSource.getRecipes().subscribe((data) => {
       this.recipes = data;
@@ -15,6 +16,7 @@ export class RecipeRepository {
         .sort();
     });
   }
+
   getRecipes(category?: string): Recipe[] {
     if (!category) {
       return this.recipes;
@@ -25,7 +27,22 @@ export class RecipeRepository {
   getProduct(id: number): Recipe | undefined {
     return this.recipes.find((p) => p.id == id);
   }
+
   getCategories(): string[] {
     return this.categories;
+  }
+
+  updateRecipe(updated: Recipe) {
+    const index = this.recipes.findIndex(r => r.id === updated.id);
+    if (index !== -1) {
+      this.recipes[index] = updated;
+    }
+  }
+
+  deleteRecipe(id: number) {
+    const index = this.recipes.findIndex(r => r.id === id);
+    if (index !== -1) {
+      this.recipes.splice(index, 1);
+    }
   }
 }

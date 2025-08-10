@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2 class="text-primary mb-4">Admin Panel - Manage Recipes</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{ recipe.id }}</td>
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.category }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editRecipe(recipe.id!)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteRecipe(recipe.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

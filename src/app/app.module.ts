@@ -18,6 +18,12 @@ import { StoreComponent } from './Store/store.component';
         path: 'store',
         component: StoreComponent,
       },
+
+      {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+      },
+
       {
         path: '**',
         component: StoreComponent,
