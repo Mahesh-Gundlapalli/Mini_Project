@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
 
   deleteRecipe(id: number) {
     this.repo.deleteRecipe(id);
-    this.recipes = this.repo.getRecipes(); // Refresh list
+    this.recipes = this.repo.getRecipes(); 
   }
 
   editRecipe(id: number) {
