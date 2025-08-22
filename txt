@@ -1,0 +1,38 @@
+sources: string[] = [];
+destinations: string[] = [];
+
+ngOnInit() {
+    this.api.getFlights().subscribe((allFlights) => {
+      this.flights = allFlights;
+
+      // Extract unique sources and destinations
+      this.sources = [...new Set(allFlights.map(f => f.source))];
+      this.destinations = [...new Set(allFlights.map(f => f.destination))];
+    });
+  }
+
+
+
+
+
+
+
+      <div class="col-md">
+        <label for="">Select Source</label>
+        <select [(ngModel)]="search.source" class="form-control form-control-lg">
+          <option value="">Select Source</option>
+          <option *ngFor="let src of sources" [value]="src">
+            {{ src }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md">
+        <label for="">Select Destination</label>
+        <select [(ngModel)]="search.destination" class="form-control form-control-lg">
+          <option value="">Select Destination</option>
+          <option *ngFor="let dest of destinations" [value]="dest">
+            {{ dest }}
+          </option>
+        </select>
+      </div>
